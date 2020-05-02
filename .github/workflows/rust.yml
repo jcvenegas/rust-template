@@ -103,7 +103,7 @@ jobs:
         with:
           command: clippy
           args: -- -D warnings
-  check:
+  coverage:
     name: Rust project
     runs-on: ubuntu-latest
     steps:
