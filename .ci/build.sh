@@ -31,13 +31,14 @@ info() {
 handle_error() {
 	local exit_code="${?}"
 	local line_number="${1:-}"
-	echo "Failed at ${script_name} +$line_number: ${BASH_COMMAND}"
+	echo "Failed at ${script_dir}/${script_name} +$line_number: ${BASH_COMMAND}"
 	exit "${exit_code}"
 }
 
 trap 'handle_error $LINENO' ERR
 
-command -v cargo || source $HOME/.cargo/env
+# shellcheck disable=SC1090
+command -v cargo || source "${HOME}/.cargo/env"
 
 info "building"
 cargo build

@@ -45,4 +45,5 @@ for pkgs in "${package_install_map[@]}"; do
 	package_install_list+=" $pkgs"
 done
 
+# shellcheck disable=SC2086
 sudo -E apt -y install ${package_install_list}

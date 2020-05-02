@@ -49,12 +49,14 @@ cargo_install() {
 
 trap 'handle_error $LINENO' ERR
 
+# shellcheck disable=SC1091
 source /etc/os-release
 
 info "Install distro build deps"
 "${script_dir}/setup-${ID}.sh"
 
 info "Installing rust"
+# shellcheck disable=SC1090
 command -v cargo || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y && source "${HOME}/.cargo/env"
 OK "rust installed"
 
