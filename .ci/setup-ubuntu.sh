@@ -36,9 +36,8 @@ handle_error() {
 
 trap 'handle_error $LINENO' ERR
 
-
 declare -A package_install_map
-package_install_map[cargo-update]="libssl-dev"
+package_install_map["cargo-update"]="libssl-dev"
 
 package_install_list=""
 for pkgs in "${package_install_map[@]}"; do
