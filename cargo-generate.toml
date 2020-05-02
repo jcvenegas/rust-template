@@ -1,2 +1,6 @@
 [template]
-exclude = ["README.tpl", ".github/workflows/rust.yml"]
+exclude = [
+	"README.tpl",
+	".github/workflows/rust.yml",
+	".github/workflows/sh.yml",
+]
