@@ -1,9 +1,11 @@
 # {{crate}}
 
-
+- [ ] Updte codecov badge
 ```
-FIXME: Update codecov badage https://codecov.io/gh/<org>/{{crate}}/settings/badge
+https://codecov.io/gh/<org>/{{crate}}/settings/badge
 ```
+- [ ] Enable repository in https://app.dependabot.com/ for automated dependency updates
+- [ ] Add repository to travis
 
 [![codecov](https://codecov.io/gh/jcvenegas/{{crate}}/branch/master/graph/badge.svg)](https://codecov.io/gh/jcvenegas/{{crate}})
 
