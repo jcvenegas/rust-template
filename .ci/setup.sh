@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Copyright (c) 2020 {{authors}}
+# Copyright (c) 2020 Carlos Venegas <vmjcarlos@gmail.com>
 #
 # SPDX-License-Identifier: Apache-2.0 OR MIT
 
@@ -57,11 +57,15 @@ info "Install distro build deps"
 
 info "Installing rust"
 # shellcheck disable=SC1090
-command -v cargo || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y && source "${HOME}/.cargo/env"
+command -v cargo || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -k
+cargo_env="${HOME}/.cargo/env"
+if [ -f "${cargo_env}" ]; then
+	source "${cargo_env}"
+fi
 OK "rust installed"
 
 info "Install clippy"
-command -v clippy || rustup component add clippy
+cargo clippy || rustup component add clippy
 OK "clippy installed"
 
 if [ "${CI:-}" != "true" ]; then

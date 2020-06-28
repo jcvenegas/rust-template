@@ -5,12 +5,17 @@ let
   rustStableChannel = nixpkgs.latest.rustChannels.stable.rust.override {
     extensions = [
       "rust-src"
+      "clippy-preview"
     ];
   };
 in
   with nixpkgs;
   stdenv.mkDerivation {
     name = "moz_overlay_shell";
+    shellHook = ''
+      export OPENSSL_DIR="${pkgs.openssl.dev}"
+      export OPENSSL_LIB_DIR="${pkgs.openssl.out}/lib"
+   '';
     buildInputs = [
       rustStableChannel
       rustup
