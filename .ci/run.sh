@@ -35,12 +35,32 @@ handle_error() {
 	exit "${exit_code}"
 }
 
+update_cargo_toml_template() {
+	origin=$(git remote get-url --push origin)
+	local service
+	local repo_org
+	if echo "${origin}" | grep github; then
+		service="github"
+		if echo "${origin}" | grep https; then
+			repo_org="${origin#https://github.com/}"
+		elif echo "${origin}" | grep "git@"; then
+			repo_org="${origin#git@github.com:}"
+		fi
+		repo_org=${repo_org%.git}
+	fi
+	sed -i "s|@repo_org@|${repo_org}|g" Cargo.toml
+	sed -i "s|@git_service@|${service}|g" Cargo.toml
+}
+
 trap 'handle_error $LINENO' ERR
 
 # shellcheck disable=SC1090
 command -v cargo || source "$HOME/.cargo/env"
 
 if [ "${CI:-}" != "true" ]; then
+	info "Update template values"
+	update_cargo_toml_template
+
 	info "Running cargo-audit"
 	cargo audit
 

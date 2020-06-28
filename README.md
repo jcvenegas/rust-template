@@ -7,11 +7,11 @@ How to use:
 REPOSITORY="git@github.com:repo/repo.git"
 cargo generate --git https://github.com/jcvenegas/rust-template.git
 cd <new-project>
+git remote add origin "${REPOSITORY}"
 ./.ci/setup.sh
 ./.ci/run.sh
 git add .ci/ .github/ .gitignore .travis.yml *
 git commit -s
-git remote add origin "${REPOSITORY}"
 git push origin master
 ```
 

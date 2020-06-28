@@ -12,3 +12,7 @@ license = "MIT OR Apache-2.0"
 [dev-dependencies]
 assert_cmd = "1.0.1"
 predicates = "1.0.4"
+
+[badges]
+codecov = { repository = "@repo_org@", branch = "master", service = "@git_service@" }
+travis-ci = { repository = "@repo_org@", branch = "master" }
