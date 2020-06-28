@@ -1,7 +1,7 @@
 [package]
-name = "test-template"
+name = "{{project-name}}"
 version = "0.1.0"
-authors = ["Jose Carlos Venegas Munoz <jose.carlos.venegas.munoz@intel.com>"]
+authors = ["{{authors}}"]
 edition = "2018"
 license = "MIT OR Apache-2.0"
 
