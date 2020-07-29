@@ -53,13 +53,18 @@ trap 'handle_error $LINENO' ERR
 source /etc/os-release
 
 info "Install distro build deps"
-"${script_dir}/setup-${ID}.sh"
+if command -v nix-shell; then
+	info "nix-shell installed not running distro setup"
+else
+	"${script_dir}/setup-${ID}.sh"
+fi
 
 info "Installing rust"
 # shellcheck disable=SC1090
 command -v cargo || curl -L --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s --  --profile default -q -y
 cargo_env="${HOME}/.cargo/env"
 if [ -f "${cargo_env}" ]; then
+	# shellcheck disable=SC1090
 	source "${cargo_env}"
 fi
 OK "rust installed"
