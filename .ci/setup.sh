@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Copyright (c) 2020 Carlos Venegas <vmjcarlos@gmail.com>
+# Copyright (c) 20XX {{authors}}
 #
 # SPDX-License-Identifier: Apache-2.0 OR MIT
 
