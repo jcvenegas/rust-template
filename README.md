@@ -10,6 +10,9 @@ git_name="${git_name/.git/}"
 cargo install cargo-generate --features vendored-openssl
 cargo generate --git https://github.com/jcvenegas/rust-template.git  --name "${git_name}"
 cd "${git_name}"
+if command -v nix-shell; then
+        nix-shell
+fi
 git remote add origin "${REPOSITORY}"
 ./.ci/setup.sh
 ./.ci/run.sh
